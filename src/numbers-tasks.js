@@ -197,10 +197,12 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  for (let i = 2, s = Math.sqrt(n); i <= s; ) {
-    if (n % i === 0) return false;
+  for (let i = 2; i <= n - 1; i += 1) {
+    if (n % i === 0) {
+      return false;
+    }
   }
-  return n > 1;
+  return true;
 }
 
 /**
@@ -218,7 +220,12 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {}
+function toNumber(value, def) {
+  if (parseInt(value, 10) === Number(value)) {
+    return value;
+  }
+  return def;
+}
 
 /**
  * Returns the cube of the given number.
